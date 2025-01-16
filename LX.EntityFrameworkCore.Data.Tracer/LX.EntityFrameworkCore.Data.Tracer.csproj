@@ -4,7 +4,10 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RepositoryUrl>https://github.com/LEX1ER/LX.EntityFrameworkCore.Data</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LEX1ER/LX.EntityFrameworkCore.Data.Tracer</RepositoryUrl>
+    <Title>EF.Core Data-Tracer</Title>
+    <Version>1.0.1</Version>
+    <Description>This package is to trace an entity data action.</Description>
   </PropertyGroup>
 
   <ItemGroup>
