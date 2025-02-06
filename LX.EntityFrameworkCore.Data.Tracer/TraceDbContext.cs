@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
+﻿using System.Reflection; 
 using LX.EntityFrameworkCore.Data.Tracer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -7,7 +6,7 @@ using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
 namespace LX.EntityFrameworkCore.Data.Tracer;
 
-public class TraceDbContext(DbContextOptions options) : DbContext(options)
+public class TraceDbContext<ITraceSource>(DbContextOptions options) : DbContext(options) where ITraceSource : class
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -22,7 +21,7 @@ public class TraceDbContext(DbContextOptions options) : DbContext(options)
         var transaction = nullableTransaction ?? base.Database.BeginTransaction();
         try
         {
-            TraceEntries();
+            TraceEntries<ITraceSource>();
             var result = base.SaveChanges(acceptAllChangesOnSuccess);
             if (nullableTransaction == null) transaction.Commit();
             return result;
@@ -39,7 +38,7 @@ public class TraceDbContext(DbContextOptions options) : DbContext(options)
         var transaction = nullableTransaction ?? await base.Database.BeginTransactionAsync(cancellationToken);
         try
         {
-            TraceEntries();
+            TraceEntries<ITraceSource>();
             var result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken); ;
             if (nullableTransaction == null) await transaction.CommitAsync(cancellationToken);
             return result;
@@ -51,10 +50,11 @@ public class TraceDbContext(DbContextOptions options) : DbContext(options)
         }
     }
 
-    private void TraceEntries()
+    
+    private void TraceEntries<ITraceOutput>() where ITraceOutput : class
     {
         var traceEntries = new List<TraceEntry>();
-        foreach (var entry in ChangeTracker.Entries<ITrace>().ToList())
+        foreach (var entry in ChangeTracker.Entries<ITraceOutput>().ToList())
         {
             var traceEntry = new TraceEntry();
             if (entry.CurrentValues != null)
