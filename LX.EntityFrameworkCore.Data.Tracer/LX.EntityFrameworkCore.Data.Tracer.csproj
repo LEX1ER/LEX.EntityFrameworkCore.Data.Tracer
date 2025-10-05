@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <RepositoryUrl>https://github.com/LEX1ER/LX.EntityFrameworkCore.Data.Tracer</RepositoryUrl>
     <Title>EF.Core Data-Tracer</Title>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Description>This package is to trace an entity data action.</Description>
     <BaseOutputPath>C:\nuget</BaseOutputPath>
 	<PackageId>LEX.EntityFrameworkCore.Data.Tracer</PackageId>
