@@ -1,12 +1,13 @@
-﻿using System.Reflection; 
+﻿using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
 using LX.EntityFrameworkCore.Data.Tracer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Reflection;
 using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
 namespace LX.EntityFrameworkCore.Data.Tracer;
 
-public class TraceDbContext<ITraceSource>(DbContextOptions options) : DbContext(options) where ITraceSource : class
+public class TraceDbContext<ITraceSource>(DbContextOptions options, ICurrentUser currentUser) : DbContext(options) where ITraceSource : class
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -50,7 +51,7 @@ public class TraceDbContext<ITraceSource>(DbContextOptions options) : DbContext(
         }
     }
 
-    
+
     private void TraceEntries<ITraceOutput>() where ITraceOutput : class
     {
         var traceEntries = new List<TraceEntry>();
@@ -157,6 +158,10 @@ public class TraceDbContext<ITraceSource>(DbContextOptions options) : DbContext(
         {
             if (traceEntry.Values.Count > 0)
             {
+                if (currentUser.UserName is not null)
+                {
+                    traceEntry.ActionBy = currentUser.UserName;
+                }
                 Set<Trace>().Add(traceEntry.ToTrace());
             }
         }
