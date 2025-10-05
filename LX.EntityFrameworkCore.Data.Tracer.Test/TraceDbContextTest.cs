@@ -1,7 +1,9 @@
-﻿using LX.EntityFrameworkCore.Data.Tracer.Test.Data;
+﻿using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
+using LX.EntityFrameworkCore.Data.Tracer.Test.Data;
 using LX.EntityFrameworkCore.Data.Tracer.Test.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Moq;
 using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
 namespace LX.EntityFrameworkCore.Data.Tracer.Test;
@@ -16,7 +18,11 @@ public class TraceDbContextTest
             .ConfigureWarnings(x =>
                 x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                     .Options;
-        Context = new ApplicationDbContext(options);
+
+        var mockCurrentUser = new Mock<ICurrentUser>();
+        mockCurrentUser.Setup(u => u.UserName).Returns("test-user");
+
+        Context = new ApplicationDbContext(options, mockCurrentUser.Object);
     }
 
     [Theory]

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LX.EntityFrameworkCore.Data.Tracer.Test.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : TraceDbContext<ITrace>(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUser currentUser) : TraceDbContext<ITrace>(options, currentUser)
 {
     public DbSet<User> Users { get; set; }
 }
