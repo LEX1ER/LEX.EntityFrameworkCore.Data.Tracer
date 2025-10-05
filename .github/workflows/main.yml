@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*.*.*'   # triggers only on version tags like v1.0.0
-    branches:
-      - master       # optional: also trigger on main branch
 
 jobs:
   build-and-publish:
