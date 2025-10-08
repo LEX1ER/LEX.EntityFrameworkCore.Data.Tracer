@@ -1,4 +1,4 @@
-namespace LX.EntityFrameworkCore.Data.Tracer.Dtos;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Dtos;
 
 public class TraceDto
 {

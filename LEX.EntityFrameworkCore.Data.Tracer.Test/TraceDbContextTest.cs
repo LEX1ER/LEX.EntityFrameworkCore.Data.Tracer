@@ -1,12 +1,12 @@
-﻿using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
-using LX.EntityFrameworkCore.Data.Tracer.Test.Data;
-using LX.EntityFrameworkCore.Data.Tracer.Test.Data.Models;
+﻿using LEX.EntityFrameworkCore.Data.Tracer.Interfaces;
+using LEX.EntityFrameworkCore.Data.Tracer.Test.Data;
+using LEX.EntityFrameworkCore.Data.Tracer.Test.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
-using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
+using Action = LEX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
-namespace LX.EntityFrameworkCore.Data.Tracer.Test;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Test;
 
 public class TraceDbContextTest
 {
@@ -14,7 +14,7 @@ public class TraceDbContextTest
     public TraceDbContextTest()
     {
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("LX.EntityFrameworkCore.Data.Tracer.Db")
+            .UseInMemoryDatabase("LEX.EntityFrameworkCore.Data.Tracer.Db")
             .ConfigureWarnings(x =>
                 x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                     .Options;

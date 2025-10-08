@@ -1,11 +1,11 @@
-﻿using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
-using LX.EntityFrameworkCore.Data.Tracer.Models;
+﻿using LEX.EntityFrameworkCore.Data.Tracer.Interfaces;
+using LEX.EntityFrameworkCore.Data.Tracer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Reflection;
-using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
+using Action = LEX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
-namespace LX.EntityFrameworkCore.Data.Tracer;
+namespace LEX.EntityFrameworkCore.Data.Tracer;
 
 public class TraceDbContext<ITraceSource>(DbContextOptions options, ICurrentUser currentUser) : DbContext(options) where ITraceSource : class
 {

@@ -1,7 +1,7 @@
 using System;
-using LX.EntityFrameworkCore.Data.Tracer.Interfaces;
+using LEX.EntityFrameworkCore.Data.Tracer.Interfaces;
 
-namespace LX.EntityFrameworkCore.Data.Tracer.Test.Data.Models;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Test.Data.Models;
 
 public class User : ITrace
 {

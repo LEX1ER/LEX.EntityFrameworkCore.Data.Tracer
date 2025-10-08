@@ -1,4 +1,4 @@
-namespace LX.EntityFrameworkCore.Data.Tracer.Enums;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Enums;
 
 public enum Action
 {

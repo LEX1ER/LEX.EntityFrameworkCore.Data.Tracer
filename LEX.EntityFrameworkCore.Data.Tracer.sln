@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LX.EntityFrameworkCore.Data.Tracer", "LX.EntityFrameworkCore.Data.Tracer\LX.EntityFrameworkCore.Data.Tracer.csproj", "{D07ADAC9-8262-461E-878E-B67EDED30ACC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LEX.EntityFrameworkCore.Data.Tracer", "LEX.EntityFrameworkCore.Data.Tracer\LEX.EntityFrameworkCore.Data.Tracer.csproj", "{D07ADAC9-8262-461E-878E-B67EDED30ACC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LX.EntityFrameworkCore.Data.Tracer.Test", "LX.EntityFrameworkCore.Data.Tracer.Test\LX.EntityFrameworkCore.Data.Tracer.Test.csproj", "{4843E900-FB0C-42E3-A197-39768C1B6711}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LEX.EntityFrameworkCore.Data.Tracer.Test", "LEX.EntityFrameworkCore.Data.Tracer.Test\LEX.EntityFrameworkCore.Data.Tracer.Test.csproj", "{4843E900-FB0C-42E3-A197-39768C1B6711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

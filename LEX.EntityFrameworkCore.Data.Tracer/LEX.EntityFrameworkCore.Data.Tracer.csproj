@@ -4,12 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RepositoryUrl>https://github.com/LEX1ER/LX.EntityFrameworkCore.Data.Tracer</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LEX1ER/LEX.EntityFrameworkCore.Data.Tracer</RepositoryUrl>
     <Title>EF.Core Data-Tracer</Title>
-    <Version>1.0.7</Version>
+    <Version>1.1.0</Version>
     <Description>This package is to trace an entity data action.</Description>
     <BaseOutputPath>C:\nuget</BaseOutputPath>
-	<PackageId>LX.EntityFrameworkCore.Data.Tracer</PackageId>
+	<PackageId>LEX.EntityFrameworkCore.Data.Tracer</PackageId>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

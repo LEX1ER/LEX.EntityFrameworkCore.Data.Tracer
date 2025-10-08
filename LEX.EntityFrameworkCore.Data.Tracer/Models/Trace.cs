@@ -1,6 +1,6 @@
-using Action = LX.EntityFrameworkCore.Data.Tracer.Enums.Action;
+using Action = LEX.EntityFrameworkCore.Data.Tracer.Enums.Action;
 
-namespace LX.EntityFrameworkCore.Data.Tracer.Models;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Models;
 
 public class Trace
 {

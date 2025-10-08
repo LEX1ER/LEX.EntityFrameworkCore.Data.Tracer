@@ -1,8 +1,8 @@
-using LX.EntityFrameworkCore.Data.Tracer.Models;
+using LEX.EntityFrameworkCore.Data.Tracer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LX.EntityFrameworkCore.Data.Tracer.Configurations;
+namespace LEX.EntityFrameworkCore.Data.Tracer.Configurations;
 
 public class TypeConfiguration : IEntityTypeConfiguration<Trace>
 {

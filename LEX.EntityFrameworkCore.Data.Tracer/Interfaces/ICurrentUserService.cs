@@ -1,4 +1,4 @@
-﻿namespace LX.EntityFrameworkCore.Data.Tracer.Interfaces
+﻿namespace LEX.EntityFrameworkCore.Data.Tracer.Interfaces
 {
     public interface ICurrentUser
     {
