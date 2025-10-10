@@ -123,9 +123,38 @@ When you save changes, `TraceDbContext` automatically:
   "ActionBy": "LoggedInUser_1"
 }
 ```
+### 💡 Tip: Avoid Duplicate Traces When Adding Related Entities
+
+When adding entities that include **related data (navigation properties)**, use `.AsNoTracking()` on related entities before attaching them.  
+This ensures Entity Framework Core does not mistakenly create **additional trace logs** for existing related records.
+
+```csharp
+
+// You need to put AsNoTracking here so it won't create any traces for Role.
+var adminRole = context.Roles.AsNoTracking().SingleOrDefault(x=> x.Name == "Admin");
+
+var userId = Guid.NewGuid();
+var user = new User
+{
+    Name = "John Doe",
+    Email = "john@example.com",
+    Delegates = new ICollection<Delegate>
+    {
+        new Delegate()
+        {
+            roleId = adminRole.Id,
+            userId = cuserId
+        }
+    }
+};
+
+await context.Users.AddAsync(user, cancellationToken);
+await context.SaveChangesAsync(cancellationToken);
+```
+
 ## 📝 Update Usage
 
-When updating an entity, `TraceDbContext` automatically detects which properties were modified and logs the **before** and **after** values.
+When updating an entity, the tracer automatically detects which properties were modified and logs the **before** and **after** values.
 
 ### Example
 
