@@ -214,3 +214,40 @@ await context.SaveChangesAsync(cancellationToken);
   "ActionBy": "John123"
 }
 ```
+## 🗑️ Delete Usage
+
+To automatically trace deletions, simply remove the entity from your `DbContext` as usual.  
+`TraceDbContext` will detect the deletion and record a trace entry.
+
+#### Example:
+
+```csharp
+var role = await context.Roles
+    // Include navigation properties if you want them traced as well
+    .Include(x => x.Delegates)
+        .ThenInclude(x => x.Users)
+    .SingleAsync(x => x.Id == id, cancellationToken);
+
+context.Roles.Remove(role);
+await context.SaveChangesAsync(cancellationToken);
+```
+
+### 🔍 What Happens
+
+- `TraceDbContext` detects that the entity was **deleted**.  
+- A **Delete** trace record is automatically created in the `Traces` table.  
+- The log captures the entity’s **last known state** before deletion.  
+- If `ICurrentUser` is implemented, the action is associated with that user.  
+
+### 🧾 Example Trace Log Entry
+
+```json
+{
+  "EntityName": "Role",
+  "Action": "Deleted",
+  "EntityData": "{\"Name\": \"Administrator\", \"Delegates\": [ ... ]}",
+  "ActionBy": "John123",
+  "ActionAt": "2025-10-11T14:20:10Z"
+}
+```
+
