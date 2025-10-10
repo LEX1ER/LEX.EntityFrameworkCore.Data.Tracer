@@ -241,6 +241,7 @@ await context.SaveChangesAsync(cancellationToken);
 
 ```json
 {
+  "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2f",
   "EntityName": "Role",
   "Action": "Deleted",
   "EntityData": "{\"Name\": \"Admin\", \"Delegates\": [ ... ]}",
