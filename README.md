@@ -55,6 +55,14 @@ public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContex
 }
 ```
 
+```csharp
+public class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUser
+{
+    public string? UserName =>
+        httpContextAccessor.HttpContext?.User?.Identity?.Name;
+}
+```
+
 ## ✏️ Create Usage
 
 When you add a new data on an entity that implements `ITrace`, the tracer automatically records the **Create** action in your trace log entity.
