@@ -54,3 +54,64 @@ public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContex
     }
 }
 ```
+
+## ✏️ Create Usage
+
+When you add a new entity that implements `ITrace`, the tracer automatically records the **Create** action in your trace log entity.
+
+### Example
+
+```csharp
+var user = new User
+{
+    Name = "John Doe",
+    Email = "john@example.com"
+};
+
+await context.Users.AddAsync(user, cancellationToken);
+await context.SaveChangesAsync(cancellationToken);
+```
+
+### 🔍 What Happens
+
+When you save changes, `TraceDbContext` automatically:
+
+1. Detects the newly added `User` entity.  
+2. Creates a **Create** trace record in your configured trace table (e.g., `User`).  
+3. Logs essential details including:
+   - **Entity name**  
+   - **Action:** `Create`  
+   - **User:** from `ICurrentUser` (if implemented)  
+   - **Timestamp**  
+   - **New entity state** in JSON format  
+
+#### 🧾 Example Trace Log Entry
+
+### 🔍 What Happens
+
+When you save changes, `TraceDbContext` automatically:
+
+1. Detects the newly added `User` entity.  
+2. Inserts a **Create** record into your trace table (e.g., `Traces`).  
+3. Logs the following details based on your `Trace` model:
+   - **EntityId** – the primary key of the affected entity  
+   - **EntityName** – the entity type (e.g., `User`)  
+   - **EntityData** – the serialized JSON data of the entity state  
+   - **Action** – the type of operation (`Create`, `Update`, `Delete`)  
+   - **ActionAt** – the timestamp of when the change occurred  
+   - **ActionBy** – the current user ID (from `ICurrentUser`, if implemented)  
+
+#### 🧾 Example Trace Log Entry
+
+```json
+{
+  "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e",
+  "EntityName": "User",
+  "EntityData": "{\"Name\": \"John Doe\", \"Email\": \"john@example.com\"}",
+  "Action": "Create",
+  "ActionAt": "2025-10-11T14:05:23Z",
+  "ActionBy": "f4c8b5e2-abc1-4a09-a8e2-97e1c1b45c93"
+}
+```
+
+
