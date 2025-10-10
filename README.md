@@ -77,7 +77,7 @@ await context.SaveChangesAsync(cancellationToken);
 When you save changes, `TraceDbContext` automatically:
 
 1. Detects the newly added `User` entity.  
-2. Inserts a **Create** record into your trace table (e.g., `Traces`).  
+2. Inserts a **Create** record into the created trace table (e.g., `Trace`).  
 3. Logs the following details based on your `Trace` model:
    - **EntityId** – the primary key of the affected entity  
    - **EntityName** – the entity type (e.g., `User`)  
