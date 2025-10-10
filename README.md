@@ -192,7 +192,6 @@ profile.Emails = emails;
 // Then proceed with your update
 context.Users.Update(user);
 await context.SaveChangesAsync(cancellationToken);
-
 ```
 
 ### 🔍 What Happens
@@ -236,7 +235,6 @@ await context.SaveChangesAsync(cancellationToken);
 - `TraceDbContext` detects that the entity was **deleted**.  
 - A **Delete** trace record is automatically created in the `Traces` table.  
 - The log captures the entity’s **last known state** before deletion.  
-- If `ICurrentUser` is implemented, the action is associated with that user.  
 
 #### 🧾 Example Trace Log Entry
 
