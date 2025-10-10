@@ -106,8 +106,7 @@ When you save changes, `TraceDbContext` automatically:
    - **Action** – the type of operation, represented by the enum:  
      - `Added`  
      - `Modified`  
-     - `Deleted`  
-     - `Restored`
+     - `Deleted`
    - **ActionAt** – the timestamp of when the change occurred  
    - **ActionBy** – the current userName (from `ICurrentUser`, if implemented)  
 
