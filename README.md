@@ -27,9 +27,9 @@ dotnet add package LEX1ER.EntityFrameworkCore.Data.Tracer
 
 ## ⚙️ Usage
 
-### 1. Inherit from `TraceDbContext<TTrace>`
+### 1. Inherit from `TraceDbContext<ITrace>`
 
-Replace your `DbContext` base class with `TraceDbContext<TTrace>` where `TTrace` is your entity or log model implementing the `ITrace` interface.
+Replace your `DbContext` base class with `TraceDbContext<ITrace>` where `ITrace` is your entity or log model implementing the `ITrace` interface.
 
 ### 2. Provide a current user implementation
 
