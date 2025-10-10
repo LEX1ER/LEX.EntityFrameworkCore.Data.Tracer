@@ -1,6 +1,6 @@
 ﻿# LEX.EntityFrameworkCore.Data.Tracer
 
-[![NuGet](https://img.shields.io/nuget/v/LEX1ER.EntityFrameworkCore.Data.Tracer.svg)](https://www.nuget.org/packages/LEX1ER.EntityFrameworkCore.Data.Tracer/)
+[![NuGet](https://img.shields.io/nuget/v/LEX1ER.EntityFrameworkCore.Data.Tracer.svg)](https://www.nuget.org/packages/LEX.EntityFrameworkCore.Data.Tracer/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An extension for **Entity Framework Core** that allows you to **trace data changes** (Create, Update, Delete) automatically for debugging, auditing, or logging purposes.
