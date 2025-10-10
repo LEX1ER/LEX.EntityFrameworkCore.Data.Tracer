@@ -84,7 +84,7 @@ When you save changes, `TraceDbContext` automatically:
    - **EntityData** – the serialized JSON data of the entity state  
    - **Action** – the type of operation (`Create`, `Update`, `Delete`)  
    - **ActionAt** – the timestamp of when the change occurred  
-   - **ActionBy** – the current user ID (from `ICurrentUser`, if implemented)  
+   - **ActionBy** – the current userName (from `ICurrentUser`, if implemented)  
 
 #### 🧾 Example Trace Log Entry
 
