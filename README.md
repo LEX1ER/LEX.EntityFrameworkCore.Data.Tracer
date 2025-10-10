@@ -23,3 +23,34 @@ Install via NuGet:
 
 ```bash
 dotnet add package LEX1ER.EntityFrameworkCore.Data.Tracer
+```
+
+## ⚙️ Usage
+
+### 1. Inherit from `TraceDbContext<TTrace>`
+
+Replace your `DbContext` base class with `TraceDbContext<TTrace>` where `TTrace` is your entity or log model implementing the `ITrace` interface.
+
+### 2. Provide a current user implementation
+
+Implement `ICurrentUser` to allow the tracer to identify who made the changes (optional but recommended).
+
+---
+
+### 🧩 Example Integration
+
+```csharp
+public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUser currentUser)
+        : base(options, currentUser)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Need this for TraceConfiguration
+        base.OnModelCreating(modelBuilder);
+    }
+}
+```
