@@ -201,7 +201,7 @@ await context.SaveChangesAsync(cancellationToken);
 - Only **modified fields** are logged in the `Traces` table.  
 - The system automatically records both **old** and **new** property values.  
 
-### 🧾 Example Trace Log Entry
+#### 🧾 Example Trace Log Entry
 
 ```json
 {
@@ -238,15 +238,16 @@ await context.SaveChangesAsync(cancellationToken);
 - The log captures the entity’s **last known state** before deletion.  
 - If `ICurrentUser` is implemented, the action is associated with that user.  
 
-### 🧾 Example Trace Log Entry
+#### 🧾 Example Trace Log Entry
 
 ```json
 {
   "EntityName": "Role",
   "Action": "Deleted",
   "EntityData": "{\"Name\": \"Administrator\", \"Delegates\": [ ... ]}",
-  "ActionBy": "John123",
+  "Action": "Deleted",
   "ActionAt": "2025-10-11T14:20:10Z"
+  "ActionBy": "John123",
 }
 ```
 
