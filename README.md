@@ -123,5 +123,65 @@ When you save changes, `TraceDbContext` automatically:
   "ActionBy": "LoggedInUser_1"
 }
 ```
+## 📝 Update Usage
 
+When updating an entity, `TraceDbContext` automatically detects which properties were modified and logs the **before** and **after** values.
 
+### Example
+
+```csharp
+var user = await context.Users
+    // Include navigation properties if you want them to be traced
+    .Include(x => x.Profile)
+    .SingleAsync(x => x.Id == request.Id, cancellationToken);
+
+request.Adapt(user);
+
+context.Users.Update(user);
+await context.SaveChangesAsync(cancellationToken);
+```
+### 💡 Tip: Avoid Duplicate Traces When Updating Related Entities
+
+If you’re loading data from another table or entity, use `.AsNoTracking()` to prevent Entity Framework Core from mistakenly creating **new trace logs** for unchanged entities.
+
+```csharp
+var user = await context.Users
+    .AsNoTracking()
+    .Include(x => x.Profile)
+    .SingleAsync(x => x.Id == request.Id, cancellationToken);
+
+// You need to put AsNoTracking here so it won't create new traces for Email.
+// It will automatically update when setting a new value for user.Profile.Email.
+var emails = context.UserEmails
+    .AsNoTracking()
+    .Where(e => e.ProfileId == user.Profile.Id)
+    .ToList();
+
+// Apply the change
+var profile = user.Profile;
+profile.Emails = emails;
+
+// Then proceed with your update
+context.Users.Update(user);
+await context.SaveChangesAsync(cancellationToken);
+
+```
+
+### 🔍 What Happens
+
+- `TraceDbContext` compares the **original** and **updated** values.  
+- Only **modified fields** are logged in the `Traces` table.  
+- The system automatically records both **old** and **new** property values.  
+
+### 🧾 Example Trace Log Entry
+
+```json
+{
+  "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e",
+  "EntityName": "User",
+  "EntityData": "{\"Name\":{\"new\":\"Admin - 1\",\"old\":\"Admin\"}}",
+  "Action": "Modified",
+  "ActionAt": "2025-10-11T14:05:23Z",
+  "ActionBy": "John123"
+}
+```
