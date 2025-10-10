@@ -209,7 +209,7 @@ await context.SaveChangesAsync(cancellationToken);
   "EntityData": "{\"Name\":{\"new\":\"Admin - 1\",\"old\":\"Admin\"}}",
   "Action": "Modified",
   "ActionAt": "2025-10-11T14:05:23Z",
-  "ActionBy": "John123"
+  "ActionBy": "LoggedInUser_1"
 }
 ```
 ## 🗑️ Delete Usage
@@ -245,7 +245,7 @@ await context.SaveChangesAsync(cancellationToken);
   "EntityData": "{\"Name\": \"Administrator\", \"Delegates\": [ ... ]}",
   "Action": "Deleted",
   "ActionAt": "2025-10-11T14:20:10Z"
-  "ActionBy": "John123",
+  "ActionBy": "LoggedInUser_1",
 }
 ```
 
