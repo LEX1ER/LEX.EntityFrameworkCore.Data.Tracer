@@ -242,7 +242,7 @@ await context.SaveChangesAsync(cancellationToken);
 {
   "EntityName": "Role",
   "Action": "Deleted",
-  "EntityData": "{\"Name\": \"Administrator\", \"Delegates\": [ ... ]}",
+  "EntityData": "{\"Name\": \"Admin\", \"Delegates\": [ ... ]}",
   "Action": "Deleted",
   "ActionAt": "2025-10-11T14:20:10Z"
   "ActionBy": "LoggedInUser_1",
