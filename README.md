@@ -40,6 +40,27 @@ Implement `ICurrentUser` to allow the tracer to identify who made the changes (o
 ### 🧩 Example Integration
 
 ```csharp
+public interface ITrace
+{
+}
+```
+
+```csharp
+public class User : ITrace
+{
+    ...
+}
+```
+
+```csharp
+public class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUser
+{
+    public string? UserName =>
+        httpContextAccessor.HttpContext?.User?.Identity?.Name;
+}
+```
+
+```csharp
 public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUser currentUser)
@@ -55,17 +76,9 @@ public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContex
 }
 ```
 
-```csharp
-public class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUser
-{
-    public string? UserName =>
-        httpContextAccessor.HttpContext?.User?.Identity?.Name;
-}
-```
-
 ## ✏️ Create Usage
 
-When you add a new data on an entity that implements `ITrace`, the tracer automatically records the **Create** action in your trace log entity.
+When you add a new data on an entity that implements `ITrace`, the tracer automatically records the **Added** action in your trace log entity.
 
 ### Example
 
@@ -90,7 +103,11 @@ When you save changes, `TraceDbContext` automatically:
    - **EntityId** – the primary key of the affected entity  
    - **EntityName** – the entity type (e.g., `User`)  
    - **EntityData** – the serialized JSON data of the entity state  
-   - **Action** – the type of operation (`Create`, `Update`, `Delete`)  
+   - **Action** – the type of operation, represented by the enum:  
+     - `Added`  
+     - `Modified`  
+     - `Deleted`  
+     - `Restored`
    - **ActionAt** – the timestamp of when the change occurred  
    - **ActionBy** – the current userName (from `ICurrentUser`, if implemented)  
 
@@ -101,9 +118,9 @@ When you save changes, `TraceDbContext` automatically:
   "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e",
   "EntityName": "User",
   "EntityData": "{\"Name\": \"John Doe\", \"Email\": \"john@example.com\"}",
-  "Action": "Create",
+  "Action": "Added",
   "ActionAt": "2025-10-11T14:05:23Z",
-  "ActionBy": "f4c8b5e2-abc1-4a09-a8e2-97e1c1b45c93"
+  "ActionBy": "LoggedInUser_1"
 }
 ```
 
