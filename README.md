@@ -72,19 +72,6 @@ await context.Users.AddAsync(user, cancellationToken);
 await context.SaveChangesAsync(cancellationToken);
 ```
 
-### 🔍 What Happens
-
-When you save changes, `TraceDbContext` automatically:
-
-1. Detects the newly added `User` entity.  
-2. Creates a **Create** trace record in your configured trace table (e.g., `User`).  
-3. Logs essential details including:
-   - **Entity name**  
-   - **Action:** `Create`  
-   - **User:** from `ICurrentUser` (if implemented)  
-   - **Timestamp**  
-   - **New entity state** in JSON format  
-
 #### 🧾 Example Trace Log Entry
 
 ### 🔍 What Happens
