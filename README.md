@@ -72,8 +72,6 @@ await context.Users.AddAsync(user, cancellationToken);
 await context.SaveChangesAsync(cancellationToken);
 ```
 
-#### 🧾 Example Trace Log Entry
-
 ### 🔍 What Happens
 
 When you save changes, `TraceDbContext` automatically:
