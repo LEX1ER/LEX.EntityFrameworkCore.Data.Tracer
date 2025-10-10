@@ -118,7 +118,7 @@ When you save changes, `TraceDbContext` automatically:
   "Id": "1b667da0-6ca6-44c1-a1b6-3a1ad47c899e",
   "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e",
   "EntityName": "User",
-  "EntityData": "{\"Id\": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e", \"Name\": \"John Doe\", \"Email\": \"john@example.com\"}",
+  "EntityData": "{\"Id\": \"b123f570-4ac1-4f53-bdf2-21e1a3e94a2e\", \"Name\": \"John Doe\", \"Email\": \"john@example.com\"}",
   "Action": "Added",
   "ActionAt": "2025-10-11T14:05:23Z",
   "ActionBy": "LoggedInUser_1"
@@ -208,7 +208,7 @@ await context.SaveChangesAsync(cancellationToken);
   "Id": "74477134-39ff-4da3-9b6d-c46c0d57510f",
   "EntityId": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e",
   "EntityName": "User",
-  "EntityData": "{\"Id\": "b123f570-4ac1-4f53-bdf2-21e1a3e94a2e", \"Name\":{\"new\":\"Admin - 1\",\"old\":\"Admin\"}}",
+  "EntityData": "{\"Id\": \"b123f570-4ac1-4f53-bdf2-21e1a3e94a2e\", \"Name\":{\"new\":\"Admin - 1\",\"old\":\"Admin\"}}",
   "Action": "Modified",
   "ActionAt": "2025-10-11T14:05:23Z",
   "ActionBy": "LoggedInUser_1"
@@ -246,7 +246,7 @@ await context.SaveChangesAsync(cancellationToken);
   "Id": "34a19bb4-9140-40ac-8ba7-44294264d26b",
   "EntityId": "ae65725a-3da1-4dba-a74a-bff583464820",
   "EntityName": "Role",
-  "EntityData": "{\"Id\": "ae65725a-3da1-4dba-a74a-bff583464820", \"Name\": \"Admin\", \"Delegates\": [ ... ]}",
+  "EntityData": "{\"Id\": \"ae65725a-3da1-4dba-a74a-bff583464820\", \"Name\": \"Admin\", \"Delegates\": [ ... ]}",
   "Action": "Deleted",
   "ActionAt": "2025-10-11T14:20:10Z"
   "ActionBy": "LoggedInUser_1",
