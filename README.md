@@ -75,7 +75,7 @@ public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContex
     }
 }
 ```
-
+---
 ## ✏️ Create Usage
 
 When you add a new data on an entity that implements `ITrace`, the tracer automatically records the **Added** action in your trace log entity.
@@ -151,7 +151,7 @@ var user = new User
 await context.Users.AddAsync(user, cancellationToken);
 await context.SaveChangesAsync(cancellationToken);
 ```
-
+---
 ## 📝 Update Usage
 
 When updating an entity, the tracer automatically detects which properties were modified and logs the **before** and **after** values.
@@ -212,6 +212,7 @@ await context.SaveChangesAsync(cancellationToken);
   "ActionBy": "LoggedInUser_1"
 }
 ```
+---
 ## 🗑️ Delete Usage
 
 To automatically trace deletions, simply remove the entity from your `DbContext` as usual.  
