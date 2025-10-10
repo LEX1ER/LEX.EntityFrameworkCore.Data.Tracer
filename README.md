@@ -57,7 +57,7 @@ public class ApplicationDbContext : TraceDbContext<ITrace>, IApplicationDbContex
 
 ## ✏️ Create Usage
 
-When you add a new entity that implements `ITrace`, the tracer automatically records the **Create** action in your trace log entity.
+When you add a new data on an entity that implements `ITrace`, the tracer automatically records the **Create** action in your trace log entity.
 
 ### Example
 
