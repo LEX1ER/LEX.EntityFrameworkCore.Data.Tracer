@@ -175,7 +175,6 @@ If you’re loading data from another table or entity, use `.AsNoTracking()` to 
 
 ```csharp
 var user = await context.Users
-    .AsNoTracking()
     .Include(x => x.Profile)
     .SingleAsync(x => x.Id == request.Id, cancellationToken);
 
