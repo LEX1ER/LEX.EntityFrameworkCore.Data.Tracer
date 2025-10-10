@@ -143,7 +143,7 @@ var user = new User
         new Delegate()
         {
             roleId = adminRole.Id,
-            userId = cuserId
+            userId = userId
         }
     }
 };
